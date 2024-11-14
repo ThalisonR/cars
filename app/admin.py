@@ -3,4 +3,10 @@ from app.models import Car
 
 # Register your models here.
 
-admin.site.register(Car)
+class CarFilter(admin.ModelAdmin):
+    list_display = ("id", "brand","model", "year")
+    list_display_links = ("id", "brand","model", "year")
+    # list_filter = ("brand", "year")  # Caixa de filtros
+    search_fields = ("brand", "model")
+    
+admin.site.register(Car, CarFilter)
